@@ -4,6 +4,8 @@ apply plugin: 'com.neenbedankt.android-apt'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
 
     defaultConfig {
         minSdkVersion 15
@@ -22,6 +24,10 @@ android {
 dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
-    apt files('libs/processor.jar')
+
+    // the json parse runtime
+    compile 'com.fasterxml.jackson.core:jackson-core:2.2.3+'
     compile files('libs/runtime.jar')
+
+    apt group: 'com.instagram', name: 'ig-json-parser-processor', version: '0.0.6+'
 }
